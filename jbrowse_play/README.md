@@ -37,7 +37,66 @@ The tracks are served from `jbrowse_play/public` and configuration is in `jbrows
 
 NOTE: Since a) the container public directory is mounted to your local machine and b) we are running jbrowse-web in development mode, any changes you make in your local public directory are immeditely reflected at http://localhost:3000 in your browser.
 
-Other container maitentance commands:
+## JBrowse Usage
+
+See the following tutorials which are still in development:
+- [Add a new genome to the display](https://github.com/GMOD/jbrowse-components/blob/master/docs/tutorials/empty-view.md)
+- [Structural Variant Inspector; circular view](https://github.com/GMOD/jbrowse-components/blob/master/docs/tutorials/structural-variant-inspector.md)
+- [Linear Genome View](https://github.com/GMOD/jbrowse-components/blob/master/docs/tutorials/linear-genome.md)
+
+## JBrowse Config
+
+The following examples should be modified to suit your needs. They should be added to the `jbrowse_play/public/test_data/config.json` file.
+
+### Add a new Genome/Dataset
+
+Add the following within the "datasets" array at the top.
+```json
+{
+  "name": "Lens culinaris (v2.0; CDC Redberry)",
+  "assembly": {
+    "name": "Lc2.RBY",
+    "aliases": [
+      "Lc2.RBY"
+    ],
+    "sequence": {
+      "type": "ReferenceSequenceTrack",
+      "trackId": "Lc2.RBY",
+      "adapter": {
+        "type": "BgzipFastaAdapter",
+        "fastaLocation": {
+          "uri": "http://localhost:3000/Lc2.RBY/Lens_culinaris_2.0.fasta.gz"
+        },
+        "faiLocation": {
+          "uri": "http://localhost:3000/Lc2.RBY/Lens_culinaris_2.0.fasta.gz.fai"
+        },
+        "gziLocation": {
+          "uri": "http://localhost:3000/Lc2.RBY/Lens_culinaris_2.0.fasta.gz.gzi"
+        }
+      },
+      "rendering": {
+        "type": "DivSequenceRenderer"
+      }
+    }
+  },
+  "tracks": []
+},
+```
+
+### Add a new track
+
+Add track stanza's to the tracks array depending on the type of file you want to serve. Make sure the "trackId" is unique! You can find examples for the various types of files and track types in the `jbrowse_play/test_data/config*.json` files. Pay special attention to the track "type" which will give an indication of whether it's for the linear or circular views.
+
+Current file types with example tracks:
+ - fasta
+ - bam
+ - cram
+ - vcf
+
+All files must be indexed and are served directly (no processing). As such you can provide web-accessible URLs rather then local ones if they are available.
+
+## Container Maitentance
+
 ```
 ### List all the available containers.
 $ docker container list
