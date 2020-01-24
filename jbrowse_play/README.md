@@ -1,13 +1,13 @@
 
 To build the image run the following command in this directory (i.e. `jbrowse_play`).
 ```
-docker build -t="jbrowse2play" .
+$ docker build -t="jbrowse2play" .
 ```
 This will take quite awhile -be patient!
 
 To run the image:
 ```
-docker run --workdir /home/node/app/jbrowse-components/packages/jbrowse-web --publish=3000:3000 -v `pwd`/public:/home/node/app/jbrowse-components/packages/jbrowse-web/public jbrowse2play yarn start
+$ docker run --workdir /home/node/app/jbrowse-components/packages/jbrowse-web --publish=3000:3000 -v `pwd`/public:/home/node/app/jbrowse-components/packages/jbrowse-web/public jbrowse2play yarn start
 ```
 
 This should provide the following output:
@@ -39,24 +39,24 @@ NOTE: Since a) the container public directory is mounted to your local machine a
 
 Other container maitentance commands:
 ```
-# List all the available containers.
-docker container list
+### List all the available containers.
+$ docker container list
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 87e4334d97f9        jbrowse2play        "docker-entrypoint.s…"   26 minutes ago      Up 25 minutes       0.0.0.0:3000->3000/tcp   nervous_mclean
 
-# See currently running containers.
-docker ps
+### See currently running containers.
+$ docker ps
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 87e4334d97f9        jbrowse2play        "docker-entrypoint.s…"   25 minutes ago      Up 25 minutes       0.0.0.0:3000->3000/tcp   nervous_mclean
 
-# Stop a container.
-docker container stop 87e4334d97f9
+### Stop a container.
+$ docker container stop 87e4334d97f9
 
-# Restart a container.
-docker container start 87e4334d97f9
+### Restart a container.
+$ docker container start 87e4334d97f9
 
-# Remove all stopped containers.
-docker container prune.
+### Remove all stopped containers.
+$ docker container prune
 ```
