@@ -31,7 +31,18 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 ```
 
-Once you see this full message, navigate to http://localhost:3000 in your browser.
+On linux, an error may appear: 
+```
+Error: ENOSPC: System limit for number of file watchers reached
+```
+
+To temporarily set the number of file watchers higher:
+```
+$ sudo sysctl fs.inotify.max_user_watches=524288
+$ sudo sysctl -p
+```
+
+Once it has started successfully, navigate to http://localhost:3000 in your browser.
 
 The tracks are served from `jbrowse_play/public` and configuration is in `jbrowse_play/public/test_data/config.json`. While I do not know of an automatic way to add tracks, you can do so modifying the `config.json` using other tracks as a template. Just be sure to use correct JSON syntax!
 
