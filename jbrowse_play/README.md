@@ -7,7 +7,7 @@ This will take quite awhile -be patient!
 
 To run the image:
 ```
-$ docker run --workdir /home/node/app/jbrowse-components/packages/jbrowse-web --publish=3000:3000 -v `pwd`/public:/home/node/app/jbrowse-components/packages/jbrowse-web/public jbrowse2play yarn start
+$ docker run --workdir /home/node/app/jbrowse-components/packages/jbrowse-web --publish=3000:3000 -v `pwd`/public/test_data:/home/node/app/jbrowse-components/packages/jbrowse-web/test_data jbrowse2play yarn start
 ```
 
 This should provide the following output:
@@ -31,7 +31,7 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 ```
 
-On linux, an error may appear: 
+On linux, an error may appear:
 ```
 Error: ENOSPC: System limit for number of file watchers reached
 ```
@@ -44,7 +44,7 @@ $ sudo sysctl -p
 
 Once it has started successfully, navigate to http://localhost:3000 in your browser.
 
-The tracks are served from `jbrowse_play/public` and configuration is in `jbrowse_play/public/test_data/config.json`. While I do not know of an automatic way to add tracks, you can do so modifying the `config.json` using other tracks as a template. Just be sure to use correct JSON syntax!
+The tracks are served from `jbrowse_play/public/test_data` and configuration is in `jbrowse_play/public/test_data/config.json`. While I do not know of an automatic way to add tracks, you can do so modifying the `config.json` using other tracks as a template. Just be sure to use correct JSON syntax!
 
 NOTE: Since a) the container public directory is mounted to your local machine and b) we are running jbrowse-web in development mode, any changes you make in your local public directory are immeditely reflected at http://localhost:3000 in your browser.
 
