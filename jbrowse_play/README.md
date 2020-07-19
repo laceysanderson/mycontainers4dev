@@ -46,3 +46,15 @@ $ docker container start 87e4334d97f9
 ### Remove all stopped containers.
 $ docker container prune
 ```
+## Troubleshooting
+
+On linux, an error may appear:
+```
+Error: ENOSPC: System limit for number of file watchers reached
+```
+
+To temporarily set the number of file watchers higher:
+```
+$ sudo sysctl fs.inotify.max_user_watches=524288
+$ sudo sysctl -p
+```
