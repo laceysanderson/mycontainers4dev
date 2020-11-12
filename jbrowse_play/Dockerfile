@@ -15,4 +15,4 @@ RUN curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash - \
 RUN npm install -g @gmod/jbrowse-cli \
   && jbrowse --version
 
-RUN mkdir tools && jbrowse create jbrowse2
+RUN mkdir tools && jbrowse create tools/jbrowse2
