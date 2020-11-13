@@ -14,4 +14,10 @@ RUN cd libraries \
   && git clone https://github.com/kiranbandi/haplotype-map
 
 RUN cd modules \
-  && git clone https://github.com/UofS-Pulse-Binfo/haplotype-map-embed
+  && git clone https://github.com/UofS-Pulse-Binfo/haplotype-map-embed haplotypembed
+
+VOLUME /var/www/html/sites/all/libraries/haplotype-map /var/www/html/sites/all/modules/haplotypembed
+
+EXPOSE 80 5432 3000
+
+ENTRYPOINT ["init.sh"]
