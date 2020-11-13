@@ -1,4 +1,10 @@
 
+This repo uses git submodules. Clone using the following command:
+
+```
+git clone --recurse-submodules https://github.com/laceysanderson/mycontainers4dev.git
+```
+
 To build the image run:
 
 ```
