@@ -1,0 +1,6 @@
+[submodule "haplotypemap/haplotypembed"]
+	path = haplotypemap/haplotypembed
+	url = https://github.com/UofS-Pulse-Binfo/haplotype-map-embed.git
+[submodule "haplotypemap/haplotype-map"]
+	path = haplotypemap/haplotype-map
+	url = https://github.com/laceysanderson/haplotype-map.git
